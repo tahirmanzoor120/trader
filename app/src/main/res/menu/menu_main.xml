@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/recoveries"
+        android:title="@string/recoveries"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/returns"
+        android:title="@string/returns"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/expenses"
+        android:title="@string/expenses"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/schedule"
+        android:title="@string/schedule"
+        app:showAsAction="ifRoom" />
+
+</menu>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/products"
+        android:icon="@drawable/ic_products_black_24dp"
+        android:title="@string/products"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/customers"
+        android:icon="@drawable/ic_people_black_24dp"
+        android:title="@string/customers"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bills"
+        android:icon="@drawable/ic_insert_drive_file_black_24dp"
+        android:title="@string/invoices"
+        app:showAsAction="ifRoom" />
+</menu>
