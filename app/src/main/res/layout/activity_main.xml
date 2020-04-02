@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/fragment_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
@@ -35,7 +42,7 @@
             android:id="@+id/navigation_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/menu_main" />
+            app:menu="@menu/menu_navigation" />
 
     </FrameLayout>
 

@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/bills"
+        android:id="@+id/invoices"
         android:icon="@drawable/ic_insert_drive_file_black_24dp"
         android:title="@string/invoices"
         app:showAsAction="ifRoom" />
