@@ -3,6 +3,7 @@ package com.tahirmanzoor.trader
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -53,27 +54,26 @@ class NewProductActivity : AppCompatActivity() {
     }
 
     fun save(view: View) {
-        validate()
-        val product = Product(
-            0,
-            productName = productName.text.toString(),
-            manufacturer = manufacturer.text.toString(),
-            batch = batch.text.toString(),
-            packing = Packing(
-                packingType = findViewById<RadioButton>(packingType.checkedRadioButtonId).text.toString(),
-                packing = packing.text.toString()
-            ),
-            mfg = mfg.text.toString(),
-            exp = exp.text.toString(),
-            retailPrice = rp.text.toString().toDouble(),
-            tradePrice = tp.text.toString().toDouble(),
-            quantity = quantity.text.toString().toInt(),
-            minStock = minStock.text.toString().toInt()
-        )
-        productViewModel.insert(product)
-        setResult(Activity.RESULT_OK, Intent())
-        finish()
-
+        if (isDataValid()) {
+            val product = Product(
+                productName = productName.text.toString(),
+                manufacturer = manufacturer.text.toString(),
+                batch = batch.text.toString(),
+                packing = Packing(
+                    packingType = findViewById<RadioButton>(packingType.checkedRadioButtonId).text.toString(),
+                    packing = packing.text.toString()
+                ),
+                mfg = mfg.text.toString(),
+                exp = exp.text.toString(),
+                retailPrice = rp.text.toString().toDouble(),
+                tradePrice = tp.text.toString().toDouble(),
+                quantity = quantity.text.toString().toInt(),
+                minStock = minStock.text.toString().toInt()
+            )
+            productViewModel.insert(product)
+            setResult(Activity.RESULT_OK, Intent())
+            finish()
+        }
     }
 
     fun cancel(view: View) {
@@ -81,34 +81,39 @@ class NewProductActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun validate() {
-        if (productName.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Name is empty.", Toast.LENGTH_SHORT).show()
-            return
+    private fun isDataValid(): Boolean {
+        if (TextUtils.isEmpty(productName.text)) {
+            productName.error = "Name is empty."
+            return false
         }
         if (manufacturer.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Manufacturer is empty.", Toast.LENGTH_SHORT).show()
-            return
+            manufacturer.error = "Manufacturer is empty."
+            return false
         }
         if (batch.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Batch is empty.", Toast.LENGTH_SHORT).show()
-            return
+            batch.error = "Batch is empty."
+            return false
+        }
+        if (packingType.checkedRadioButtonId == -1) {
+            Toast.makeText(applicationContext, "Select a packing type.", Toast.LENGTH_LONG).show()
+            return false
         }
         if (packing.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Packing is empty.", Toast.LENGTH_SHORT).show()
-            return
+            packing.error = "Packing is empty."
+            return false
         }
         if (rp.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Retail price is empty.", Toast.LENGTH_SHORT).show()
-            return
+            rp.error = "Retail price is empty."
+            return false
         }
         if (tp.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Trade Price is empty.", Toast.LENGTH_SHORT).show()
-            return
+            tp.error = "Trade Price is empty."
+            return false
         }
         if (quantity.text.isNullOrBlank()) {
-            Toast.makeText(applicationContext, "Quantity is empty.", Toast.LENGTH_SHORT).show()
-            return
+            quantity.error = "Quantity is empty."
+            return false
         }
+        return true
     }
 }

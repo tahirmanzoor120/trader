@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey
 data class Product(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "product_id")
-    var productId: Long,
+    var productId: Long = 0, // Default Value
 
     @ColumnInfo(name = "product_name")
     var productName: String,
