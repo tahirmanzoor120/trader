@@ -1,4 +1,4 @@
-package com.tahirmanzoor.trader.vm
+package com.tahirmanzoor.trader.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

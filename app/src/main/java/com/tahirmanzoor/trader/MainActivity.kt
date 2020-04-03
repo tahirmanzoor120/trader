@@ -1,6 +1,8 @@
 package com.tahirmanzoor.trader
 
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
     private lateinit var coordinatorLayout: CoordinatorLayout
     private lateinit var navigationView: NavigationView
     private lateinit var fabAddNewInvoice: FloatingActionButton
+
+    private val newWordActivityRequestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +98,15 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
         }
 
         fabAddNewInvoice.setOnClickListener {
+            val fragments = supportFragmentManager.fragments
+            if (fragments.size > 0) {
+                val fragment: Fragment = fragments.get(0)
+                if (fragment.toString().contains("Product")) {
+                    val intent = Intent(this@MainActivity, NewProductActivity::class.java)
+                    startActivityForResult(intent, newWordActivityRequestCode)
+                }
+            }
+
             Toast.makeText(applicationContext, "FAB Clicked.", Toast.LENGTH_SHORT).show()
         }
 
@@ -122,5 +135,16 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
         transaction.commit()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+
+        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            Toast.makeText(
+                applicationContext,
+                R.string.product_added_msg,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
 }
 

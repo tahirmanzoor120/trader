@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tahirmanzoor.trader.R
 import com.tahirmanzoor.trader.adapter.ProductListAdapter
 import com.tahirmanzoor.trader.dto.Product
-import com.tahirmanzoor.trader.vm.ProductViewModel
+import com.tahirmanzoor.trader.model.ProductViewModel
 
 /**
  * A fragment representing a list of Items.

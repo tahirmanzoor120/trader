@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.tahirmanzoor.trader.dto.Packing
 import com.tahirmanzoor.trader.dto.Product
-import com.tahirmanzoor.trader.vm.ProductViewModel
+import com.tahirmanzoor.trader.model.ProductViewModel
 
 class NewProductActivity : AppCompatActivity() {
 
