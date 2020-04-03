@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EX
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.tahirmanzoor.trader.dummy.DummyContent
+import com.tahirmanzoor.trader.dto.Product
 import com.tahirmanzoor.trader.fragment.product.ProductFragment
 
 
@@ -99,18 +99,22 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
 
     }
 
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
+    override fun onListFragmentInteraction(product: Product) {
         Toast.makeText(applicationContext, "Clicked on the List", Toast.LENGTH_SHORT).show()
-        if (item != null) {
+        if (product != null) {
             Toast.makeText(
                 applicationContext,
-                "Dummy Item Selected: " + item.content,
+                "Product Selected: " + product.productId,
                 Toast.LENGTH_SHORT
             ).show()
         }
     }
 
-    fun addFragmentToActivity(manager: FragmentManager, fragment: Fragment?, containerViewID: Int) {
+    private fun addFragmentToActivity(
+        manager: FragmentManager,
+        fragment: Fragment?,
+        containerViewID: Int
+    ) {
         val transaction: FragmentTransaction = manager.beginTransaction()
         if (fragment != null) {
             transaction.add(containerViewID, fragment)

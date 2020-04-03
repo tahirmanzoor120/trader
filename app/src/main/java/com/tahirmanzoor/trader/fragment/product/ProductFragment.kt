@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tahirmanzoor.trader.R
-import com.tahirmanzoor.trader.dummy.DummyContent
-import com.tahirmanzoor.trader.dummy.DummyContent.DummyItem
+import com.tahirmanzoor.trader.adapter.ProductListAdapter
+import com.tahirmanzoor.trader.dto.Product
+import com.tahirmanzoor.trader.vm.ProductViewModel
 
 /**
  * A fragment representing a list of Items.
@@ -22,6 +24,8 @@ class ProductFragment : Fragment() {
 
     private var columnCount = 1
     private var listener: OnListFragmentInteractionListener? = null
+    private lateinit var productViewModel: ProductViewModel
+    private lateinit var productListAdapter: ProductListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +47,16 @@ class ProductFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyProductRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                layoutManager = LinearLayoutManager(context)
+                adapter = ProductListAdapter(context)
             }
+            productListAdapter = view.adapter as ProductListAdapter
+            productViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+            productViewModel.allProducts.observe(viewLifecycleOwner, Observer {
+                it?.let { productListAdapter.setProducts(it) }
+            })
         }
+
 
         // Return back
         return view
@@ -88,7 +95,7 @@ class ProductFragment : Fragment() {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: Product)
     }
 
     companion object {

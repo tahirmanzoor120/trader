@@ -16,11 +16,11 @@ class ProductListAdapter internal constructor(context: Context) :
     private var products = emptyList<Product>() // Cached copy of products
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productNameView: TextView = itemView.findViewById(R.id.product_name)
+        val productDescription: TextView = itemView.findViewById(R.id.ls_product_description)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val productView = inflater.inflate(R.layout.recyclerview_product, parent, false)
+        val productView = inflater.inflate(R.layout.fragment_product, parent, false)
         return ProductViewHolder(productView)
     }
 
@@ -29,8 +29,13 @@ class ProductListAdapter internal constructor(context: Context) :
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val current = products[position]
-        holder.productNameView.text = current.productName
+        val product = products[position]
+        val builder = StringBuilder()
+        builder.append(position + 1).append(" : ").append(product.productName).append(" (")
+            .append(product.manufacturer).append(") ")
+            .append(product.packing.packing)
+
+        holder.productDescription.text = builder.toString()
     }
 
     internal fun setProducts(products: List<Product>) {
