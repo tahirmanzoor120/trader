@@ -45,7 +45,7 @@ class NewProductActivity : AppCompatActivity() {
         batch = findViewById(R.id.editText_batch)
         mfg = findViewById(R.id.editText_mfg)
         exp = findViewById(R.id.editText_exp)
-        packingType = findViewById(R.id.rg_packingType)
+        //packingType = findViewById(R.id.rg_packingType)
         packing = findViewById(R.id.editText_packing)
         rp = findViewById(R.id.editText_rp)
         tp = findViewById(R.id.editText_tp)
@@ -66,7 +66,7 @@ class NewProductActivity : AppCompatActivity() {
                 mfg = mfg.text.toString(),
                 exp = exp.text.toString(),
                 retailPrice = rp.text.toString().toDouble(),
-                tradePrice = tp.text.toString().toDouble(),
+                purchasePrice = tp.text.toString().toDouble(),
                 quantity = quantity.text.toString().toInt(),
                 minStock = minStock.text.toString().toInt()
             )

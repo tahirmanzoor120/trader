@@ -30,15 +30,18 @@ data class Product(
     var exp: String,
 
     @ColumnInfo(name = "retail_price")
-    var retailPrice: Double,
+    var retailPrice: Double = 0.0,
 
-    @ColumnInfo(name = "trade_price")
-    var tradePrice: Double,
+    @ColumnInfo(name = "sale_price")
+    var salePrice: Double = 0.0,
 
-    var quantity: Int,
+    @ColumnInfo(name = "purchase_price")
+    var purchasePrice: Double = 0.0,
+
+    var quantity: Int = 0,
 
     @ColumnInfo(name = "min_stock")
-    var minStock: Int
+    var minStock: Int = 0
 )
 
 data class Packing(

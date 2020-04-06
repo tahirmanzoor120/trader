@@ -31,4 +31,9 @@
     <string name="expenses">Expenses</string>
     <string name="schedule">Schedule</string>
     <string name="error">Error: Failed</string>
+    <string name="purchase_price">Purchase Price:</string>
+    <string name="sale_price">Sale Price:</string>
+    <string name="stock_quantity">Stock Quantity:</string>
+    <string name="stock_value">Stock Value:</string>
+    <string name="round_to_two_decimal_places">%.2f</string>
 </resources>

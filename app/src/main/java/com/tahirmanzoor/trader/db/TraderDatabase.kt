@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.tahirmanzoor.trader.dao.ProductDAO
 import com.tahirmanzoor.trader.dto.Product
 
-@Database(version = 2, entities = [Product::class], exportSchema = false)
+@Database(version = 3, entities = [Product::class], exportSchema = false)
 abstract class TraderDatabase : RoomDatabase() {
     abstract val productDAO: ProductDAO
 

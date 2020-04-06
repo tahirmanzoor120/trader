@@ -112,15 +112,15 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
 
     }
 
-    override fun onListFragmentInteraction(product: Product) {
+    override fun onListFragmentInteraction(item: Product) {
         Toast.makeText(applicationContext, "Clicked on the List", Toast.LENGTH_SHORT).show()
-        if (product != null) {
-            Toast.makeText(
-                applicationContext,
-                "Product Selected: " + product.productId,
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+
+        Toast.makeText(
+            applicationContext,
+            "Product Selected: " + item.productId,
+            Toast.LENGTH_SHORT
+        ).show()
+
     }
 
     private fun addFragmentToActivity(
